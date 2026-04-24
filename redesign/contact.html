@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Michael Torbert</title>
+  <meta name="description" content="Get in touch with Michael Torbert — email, LinkedIn, WordPress.org, GitHub, and X/Twitter.">
+  <style>
+    :root {
+      --ink: #111111; --bone: #faf8f3; --paper: #ffffff;
+      --rule: #e6e2d8; --muted: #5b5952; --accent: #a43f28;
+      --serif: Georgia, "Iowan Old Style", "Source Serif Pro", ui-serif, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+      --canvas: 70rem;
+      --step: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bone); color: var(--ink); font: var(--step)/1.65 var(--sans); font-feature-settings: "kern","liga"; }
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--accent); text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .skip { position: absolute; left: -9999px; background: var(--ink); color: var(--bone); padding: .5rem .75rem; }
+    .skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+    .shell { max-width: var(--canvas); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header (shared) */
+    .site-header { border-bottom: 1px solid var(--rule); background: var(--bone); position: sticky; top: 0; z-index: 5; }
+    .site-header .shell { display: flex; align-items: baseline; justify-content: space-between; padding-top: 1.25rem; padding-bottom: 1.25rem; gap: 1.5rem; flex-wrap: wrap; }
+    .wordmark { font-family: var(--serif); font-size: 1.125rem; font-weight: 400; letter-spacing: 0.01em; text-decoration: none; }
+    .wordmark em { font-style: italic; color: var(--accent); }
+    .primary-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: .8125rem; letter-spacing: 0.04em; text-transform: lowercase; }
+    .primary-nav a { text-decoration: none; color: var(--muted); }
+    .primary-nav a[aria-current="page"] { color: var(--ink); }
+    .primary-nav a:hover { color: var(--accent); }
+
+    /* Page head */
+    .page-head { padding: 6rem 0 3rem; border-bottom: 1px solid var(--rule); }
+    .eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 1.25rem; }
+    .page-head h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.25rem, 1.25rem + 3.5vw, 4.25rem); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.5rem; max-width: 16ch; }
+    .page-head h1 em { font-style: italic; color: var(--accent); }
+    .page-head .deck { font-size: 1.25rem; line-height: 1.55; color: var(--muted); max-width: 36rem; margin: 0; }
+
+    /* Contact grid */
+    .contact-body { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+    .contact-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem; }
+    .col-head {
+      font-family: var(--mono); font-size: .75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); margin: 0 0 1.5rem;
+    }
+
+    .contact-list { list-style: none; margin: 0; padding: 0; }
+    .contact-list li {
+      border-top: 1px solid var(--rule);
+      padding: 1.5rem 0;
+      display: grid; grid-template-columns: 8rem 1fr auto; gap: 1rem;
+      align-items: baseline;
+    }
+    .contact-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .contact-list li:first-child { border-top: 1px solid var(--ink); }
+    .contact-list .label {
+      font-family: var(--mono); font-size: .75rem; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .contact-list .value {
+      font-family: var(--serif); font-size: 1.125rem; color: var(--ink);
+      word-break: break-word;
+    }
+    .contact-list .value a { text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px; }
+    .contact-list .value a:hover { color: var(--accent); border-color: var(--accent); }
+    .contact-list .go {
+      font-family: var(--mono); font-size: .75rem; letter-spacing: 0.08em;
+      text-transform: lowercase; color: var(--muted); text-decoration: none;
+    }
+    .contact-list .go:hover { color: var(--accent); }
+
+    /* What I respond to */
+    .expectations { padding: 4rem 0; border-bottom: 1px solid var(--rule); }
+    .expectations .shell { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 4rem; align-items: start; }
+    .expectations h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(1.5rem, 1rem + 1.5vw, 2rem);
+      line-height: 1.15; margin: 0; letter-spacing: -0.01em;
+    }
+    .expectations ul {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 1.25rem;
+    }
+    .expectations li {
+      display: grid; grid-template-columns: 1.5rem 1fr; gap: 1rem;
+      padding-bottom: 1.25rem; border-bottom: 1px solid var(--rule);
+    }
+    .expectations li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .expectations .mark {
+      font-family: var(--mono); font-size: .8125rem; color: var(--accent); letter-spacing: 0.04em;
+    }
+    .expectations p { margin: 0; color: var(--muted); }
+    .expectations p strong { color: var(--ink); font-weight: 500; }
+
+    /* Footer (shared) */
+    .site-footer { padding: 4rem 0 2.5rem; background: var(--ink); color: var(--bone); }
+    .site-footer .shell { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; }
+    .site-footer h4 { font-family: var(--mono); font-size: .75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8a877e; margin: 0 0 1rem; font-weight: 400; }
+    .site-footer a { color: var(--bone); text-decoration: none; border-bottom: 1px solid #3a3833; padding-bottom: 1px; }
+    .site-footer a:hover { border-color: var(--bone); color: #fff; }
+    .site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+    .site-footer .colophon { grid-column: 1 / -1; border-top: 1px solid #2a2824; margin-top: 2.5rem; padding-top: 1.5rem; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: .75rem; color: #8a877e; letter-spacing: 0.04em; }
+    .site-footer .signoff { font-family: var(--serif); font-style: italic; color: #d4cfc2; font-size: 1rem; max-width: 22rem; }
+
+    @media (max-width: 780px) {
+      .page-head { padding: 3.5rem 0 2.5rem; }
+      .site-header .shell { padding-top: 1rem; padding-bottom: 1rem; }
+      .primary-nav ul { gap: 1rem; }
+      .contact-body { padding: 3rem 0; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-list li { grid-template-columns: 1fr; gap: .35rem; }
+      .contact-list .go { justify-self: start; }
+      .expectations .shell { grid-template-columns: 1fr; gap: 2rem; }
+      .site-footer .shell { grid-template-columns: 1fr 1fr; }
+      .site-footer .colophon { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell">
+      <a class="wordmark" href="index.html">Michael <em>Torbert</em></a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="/writing/">writing</a></li>
+          <li><a href="/photography/">photography</a></li>
+          <li><a href="/projects/">projects</a></li>
+          <li><a href="contact.html" aria-current="page">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-head" aria-labelledby="contact-heading">
+      <div class="shell">
+        <p class="eyebrow">Contact</p>
+        <h1 id="contact-heading">Say hello. <em>Then wait a day or two.</em></h1>
+        <p class="deck">I read every message. I reply to most. The fastest ways to reach me are email and LinkedIn — the rest are social, and I'm slower there.</p>
+      </div>
+    </section>
+
+    <section class="contact-body" aria-labelledby="how-heading">
+      <div class="shell">
+        <h2 id="how-heading" class="visually-hidden" style="position:absolute; left:-9999px;">How to reach me</h2>
+        <div class="contact-grid">
+          <div>
+            <p class="col-head">Direct</p>
+            <ul class="contact-list">
+              <li>
+                <span class="label">Email</span>
+                <span class="value"><a href="mailto:michael@example.com">michael@example.com</a></span>
+                <a class="go" href="mailto:michael@example.com">compose →</a>
+              </li>
+              <li>
+                <span class="label">LinkedIn</span>
+                <span class="value"><a href="https://www.linkedin.com/in/michaeltorbert/">michaeltorbert</a></span>
+                <a class="go" href="https://www.linkedin.com/in/michaeltorbert/">open →</a>
+              </li>
+              <li>
+                <span class="label">Mailing list</span>
+                <span class="value"><a href="/feed/">RSS feed</a></span>
+                <a class="go" href="/feed/">subscribe →</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="col-head">Elsewhere</p>
+            <ul class="contact-list">
+              <li>
+                <span class="label">WordPress.org</span>
+                <span class="value"><a href="https://profiles.wordpress.org/hallsofmontezuma/">@hallsofmontezuma</a></span>
+                <a class="go" href="https://profiles.wordpress.org/hallsofmontezuma/">open →</a>
+              </li>
+              <li>
+                <span class="label">GitHub</span>
+                <span class="value"><a href="#">@michaeltorbert</a></span>
+                <a class="go" href="#">open →</a>
+              </li>
+              <li>
+                <span class="label">X / Twitter</span>
+                <span class="value"><a href="#">@michaeltorbert</a></span>
+                <a class="go" href="#">open →</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="expectations" aria-labelledby="what-heading">
+      <div class="shell">
+        <h2 id="what-heading">What I respond to</h2>
+        <ul>
+          <li>
+            <span class="mark">01</span>
+            <p><strong>WordPress &amp; plugin questions.</strong> If it's about AIOSEO, WordPress in general, or running a small software business — I'll almost always reply.</p>
+          </li>
+          <li>
+            <span class="mark">02</span>
+            <p><strong>Consulting &amp; agency inquiries.</strong> Semper Fi Web Design takes on a limited number of clients; real introductions welcome.</p>
+          </li>
+          <li>
+            <span class="mark">03</span>
+            <p><strong>Speaking &amp; WordCamps.</strong> If you're organizing an event, send the dates and topic. I say yes more often than you'd think.</p>
+          </li>
+          <li>
+            <span class="mark">04</span>
+            <p><strong>Press &amp; podcast interviews.</strong> Happy to talk about AIOSEO, the open web, veteran-run software, or the book.</p>
+          </li>
+          <li>
+            <span class="mark">—</span>
+            <p>Cold sales pitches, SEO audits, and "quick partnership" emails are deleted unread. Thanks for understanding.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div>
+        <h4>Colophon</h4>
+        <p class="signoff">A small, personal corner of the web — hand-kept since 2005. Subscribe by <a href="/feed/">RSS</a>.</p>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="mailto:michael@example.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/michaeltorbert/">LinkedIn</a></li>
+          <li><a href="https://profiles.wordpress.org/hallsofmontezuma/">WordPress.org</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Writing</h4>
+        <ul>
+          <li><a href="/category/wordpress/">WordPress</a></li>
+          <li><a href="/category/technology/">Technology</a></li>
+          <li><a href="/category/business/">Business</a></li>
+          <li><a href="/category/travel/">Travel</a></li>
+          <li><a href="/category/photography/">Photography</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Archive</h4>
+        <ul>
+          <li><a href="/category/virginia-tech/">Virginia Tech</a></li>
+          <li><a href="/category/wordcamp/">WordCamp</a></li>
+          <li><a href="/category/politics/">Politics</a></li>
+          <li><a href="/archive/">Full archive</a></li>
+        </ul>
+      </div>
+      <p class="colophon">
+        <span>© 2005–2026 Michael Torbert</span>
+        <span>Semper Fidelis.</span>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

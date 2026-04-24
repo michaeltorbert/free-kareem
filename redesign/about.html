@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Michael Torbert</title>
+  <meta name="description" content="Michael Torbert is a WordPress developer, Marine Corps veteran, founder of All-in-One SEO Pack, CEO of Semper Fi Web Design, and co-author of WordPress All-in-One for Dummies.">
+  <style>
+    :root {
+      --ink: #111111; --bone: #faf8f3; --paper: #ffffff;
+      --rule: #e6e2d8; --muted: #5b5952; --accent: #a43f28;
+      --serif: Georgia, "Iowan Old Style", "Source Serif Pro", ui-serif, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+      --measure: 36rem;
+      --canvas: 70rem;
+      --step: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--bone); color: var(--ink); font: var(--step)/1.7 var(--sans); font-feature-settings: "kern","liga"; }
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--accent); text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .skip { position: absolute; left: -9999px; background: var(--ink); color: var(--bone); padding: .5rem .75rem; }
+    .skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+    .shell { max-width: var(--canvas); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header (shared) */
+    .site-header { border-bottom: 1px solid var(--rule); background: var(--bone); position: sticky; top: 0; z-index: 5; }
+    .site-header .shell { display: flex; align-items: baseline; justify-content: space-between; padding-top: 1.25rem; padding-bottom: 1.25rem; gap: 1.5rem; flex-wrap: wrap; }
+    .wordmark { font-family: var(--serif); font-size: 1.125rem; font-weight: 400; letter-spacing: 0.01em; text-decoration: none; }
+    .wordmark em { font-style: italic; color: var(--accent); }
+    .primary-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: .8125rem; letter-spacing: 0.04em; text-transform: lowercase; }
+    .primary-nav a { text-decoration: none; color: var(--muted); }
+    .primary-nav a[aria-current="page"] { color: var(--ink); }
+    .primary-nav a:hover { color: var(--accent); }
+
+    /* Page head */
+    .page-head { padding: 6rem 0 3rem; border-bottom: 1px solid var(--rule); }
+    .eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 1.25rem; }
+    .page-head h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.25rem, 1.25rem + 3.5vw, 4.25rem); line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 1.5rem; max-width: 18ch; }
+    .page-head h1 em { font-style: italic; color: var(--accent); }
+    .page-head .deck { font-size: 1.25rem; line-height: 1.55; color: var(--muted); max-width: var(--measure); margin: 0; }
+
+    /* Article + sidecar */
+    .about-body { display: grid; grid-template-columns: minmax(0, 1fr) 18rem; gap: 5rem; padding: 5rem 0; }
+    .about-body article { max-width: var(--measure); }
+    .about-body h2 { font-family: var(--serif); font-weight: 400; font-size: 1.75rem; line-height: 1.2; margin: 3rem 0 1rem; letter-spacing: -0.01em; }
+    .about-body h2::before { content: ""; display: block; width: 2.5rem; height: 1px; background: var(--accent); margin-bottom: 1rem; }
+    .about-body p { margin: 0 0 1.25rem; }
+    .about-body p + p { text-indent: 1.5em; }
+    .about-body p.no-indent + p, .about-body h2 + p, .about-body blockquote + p, .about-body hr + p { text-indent: 0; }
+    .about-body .lede { font-size: 1.125rem; color: var(--muted); text-indent: 0; }
+    .about-body .lede::first-letter {
+      font-family: var(--serif);
+      float: left; font-size: 4.25rem; line-height: .85;
+      padding: .3rem .5rem 0 0; color: var(--ink);
+    }
+
+    blockquote.pull {
+      font-family: var(--serif);
+      font-size: 1.5rem; line-height: 1.35;
+      font-style: italic;
+      color: var(--ink);
+      margin: 3rem 0;
+      padding: 0 0 0 1.5rem;
+      border-left: 2px solid var(--accent);
+      max-width: 32rem;
+    }
+    blockquote.pull cite {
+      display: block;
+      font-family: var(--mono);
+      font-size: .75rem;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* Sidecar */
+    aside.facts {
+      position: sticky; top: 6rem; align-self: start;
+      border-top: 1px solid var(--ink);
+      padding-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: .8125rem;
+      line-height: 1.7;
+    }
+    aside.facts h3 {
+      font-family: var(--mono); font-size: .75rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); font-weight: 400; margin: 0 0 1.25rem;
+    }
+    aside.facts dl { margin: 0; display: grid; grid-template-columns: 7rem 1fr; gap: .5rem 1rem; }
+    aside.facts dt { color: var(--muted); text-transform: uppercase; font-size: .7rem; letter-spacing: 0.08em; padding-top: .15rem; }
+    aside.facts dd { margin: 0; color: var(--ink); }
+
+    /* CTA strip */
+    .cta-strip { padding: 5rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .cta-strip .shell { display: flex; align-items: baseline; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .cta-strip h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.75rem, 1rem + 2vw, 2.5rem); line-height: 1.15; margin: 0; max-width: 22ch; letter-spacing: -0.01em; }
+    .cta {
+      font-family: var(--mono); font-size: .8125rem; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: .9rem 1.25rem; text-decoration: none; border: 1px solid var(--ink);
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--ink); color: var(--bone);
+      transition: background .15s ease, color .15s ease;
+    }
+    .cta:hover { background: var(--accent); border-color: var(--accent); color: var(--bone); }
+
+    /* Footer (shared) */
+    .site-footer { padding: 4rem 0 2.5rem; background: var(--ink); color: var(--bone); }
+    .site-footer .shell { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; }
+    .site-footer h4 { font-family: var(--mono); font-size: .75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8a877e; margin: 0 0 1rem; font-weight: 400; }
+    .site-footer a { color: var(--bone); text-decoration: none; border-bottom: 1px solid #3a3833; padding-bottom: 1px; }
+    .site-footer a:hover { border-color: var(--bone); color: #fff; }
+    .site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+    .site-footer .colophon { grid-column: 1 / -1; border-top: 1px solid #2a2824; margin-top: 2.5rem; padding-top: 1.5rem; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; font-family: var(--mono); font-size: .75rem; color: #8a877e; letter-spacing: 0.04em; }
+    .site-footer .signoff { font-family: var(--serif); font-style: italic; color: #d4cfc2; font-size: 1rem; max-width: 22rem; }
+
+    @media (max-width: 900px) {
+      .about-body { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 0; }
+      aside.facts { position: static; }
+    }
+    @media (max-width: 780px) {
+      .page-head { padding: 3.5rem 0 2.5rem; }
+      .site-header .shell { padding-top: 1rem; padding-bottom: 1rem; }
+      .primary-nav ul { gap: 1rem; }
+      .site-footer .shell { grid-template-columns: 1fr 1fr; }
+      .site-footer .colophon { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell">
+      <a class="wordmark" href="index.html">Michael <em>Torbert</em></a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="about.html" aria-current="page">about</a></li>
+          <li><a href="/writing/">writing</a></li>
+          <li><a href="/photography/">photography</a></li>
+          <li><a href="/projects/">projects</a></li>
+          <li><a href="contact.html">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-head" aria-labelledby="about-heading">
+      <div class="shell">
+        <p class="eyebrow">About</p>
+        <h1 id="about-heading">A WordPress story, <em>in four chapters.</em></h1>
+        <p class="deck">Marine, developer, Southerner, husband. Founder of All-in-One SEO Pack, CEO of Semper Fi Web Design, co-author of <em>WordPress All-in-One for Dummies</em> — and someone who still believes in a small, personal web.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell about-body">
+        <article>
+          <p class="lede no-indent">I grew up in the South, studied at Virginia Tech, and signed with the United States Marine Corps — not because any of it was a plan, but because each one felt like the right next door. That's more or less how the rest of this has gone, too.</p>
+
+          <h2>Virginia Tech &amp; the Marines</h2>
+          <p class="no-indent">College landed me in Blacksburg, Virginia, where I spent a few formative years before leaving school to enlist in the Marine Corps. "College dropout" and "Marine" are both true; the second one mattered more. The Corps gave me a set of habits — show up, keep your word, take the hill — that everything since has rested on.</p>
+          <p>I still have friends from both. I still go back to both.</p>
+
+          <blockquote class="pull">
+            Semper Fidelis isn't a slogan. It's a way of making things — software included — that you'd still be proud of ten years from now.
+            <cite>— On why the agency is named what it is</cite>
+          </blockquote>
+
+          <h2>All-in-One SEO Pack</h2>
+          <p class="no-indent">In 2007 I released a small WordPress plugin called <strong>All-in-One SEO Pack</strong>. It was the first SEO plugin for WordPress. I did not expect it to become what it became. Over the next decade-plus it was installed on millions of sites, translated into dozens of languages, and sustained by a community of contributors I'm still grateful for.</p>
+          <p>In time I handed the plugin to a new team at AIOSEO who could take it further than I could alone. Letting go of something you built is its own kind of work. I recommend it.</p>
+
+          <h2>Semper Fi Web Design</h2>
+          <p class="no-indent">Alongside the plugin, I ran a WordPress studio — <strong>Semper Fi Web Design</strong> — building custom sites for small businesses, authors, and non-profits. Veteran-founded, small-team, no-drama. We're still at it.</p>
+
+          <h2>The book, the talks, the WordCamps</h2>
+          <p class="no-indent">In 2011 I co-authored <em>WordPress All-in-One for Dummies</em> with Lisa Sabin-Wilson — a thick, honest reference for people running real sites. I've since spoken at WordCamps, organized a few, contributed translations, and done the quiet maintenance work that keeps an open community alive.</p>
+
+          <blockquote class="pull">
+            The open web is worth defending. Write on your own site. Own your archives. Syndicate elsewhere if you want to — but come home.
+          </blockquote>
+
+          <h2>Photography, travel, family</h2>
+          <p class="no-indent">Outside of software, I travel when I can and photograph more than I publish — mountains, streets, the occasional yak. My wife <strong>Kim</strong> runs <a href="#">Yak My Body</a>, a social enterprise that supports marginalized Tibetan women through soap-making. We spend time in Asia most years because of her work, and because it's worth it.</p>
+
+          <h2>Now</h2>
+          <p class="no-indent">These days I write, build, consult selectively, and keep a small personal corner of the internet — this one. If you'd like to be in touch, the <a href="contact.html">contact page</a> is probably the right door.</p>
+        </article>
+
+        <aside class="facts" aria-label="Quick facts">
+          <h3>The short version</h3>
+          <dl>
+            <dt>Based</dt>          <dd>Raleigh, NC</dd>
+            <dt>From</dt>           <dd>The American South</dd>
+            <dt>School</dt>         <dd>Virginia Tech</dd>
+            <dt>Service</dt>        <dd>USMC</dd>
+            <dt>Founded</dt>        <dd>All-in-One SEO Pack (2007)</dd>
+            <dt>Leads</dt>          <dd>Semper Fi Web Design</dd>
+            <dt>Wrote</dt>          <dd>WordPress A-i-O for Dummies</dd>
+            <dt>Speaks at</dt>      <dd>WordCamps</dd>
+            <dt>Shoots with</dt>    <dd>Fujifilm &amp; film</dd>
+            <dt>Online since</dt>   <dd>2005</dd>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="cta-strip" aria-label="Contact">
+      <div class="shell">
+        <h2>Working on something in WordPress? I read every email.</h2>
+        <a class="cta" href="contact.html">Get in touch →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div>
+        <h4>Colophon</h4>
+        <p class="signoff">A small, personal corner of the web — hand-kept since 2005. Subscribe by <a href="/feed/">RSS</a>.</p>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="mailto:michael@example.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/michaeltorbert/">LinkedIn</a></li>
+          <li><a href="https://profiles.wordpress.org/hallsofmontezuma/">WordPress.org</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Writing</h4>
+        <ul>
+          <li><a href="/category/wordpress/">WordPress</a></li>
+          <li><a href="/category/technology/">Technology</a></li>
+          <li><a href="/category/business/">Business</a></li>
+          <li><a href="/category/travel/">Travel</a></li>
+          <li><a href="/category/photography/">Photography</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Archive</h4>
+        <ul>
+          <li><a href="/category/virginia-tech/">Virginia Tech</a></li>
+          <li><a href="/category/wordcamp/">WordCamp</a></li>
+          <li><a href="/category/politics/">Politics</a></li>
+          <li><a href="/archive/">Full archive</a></li>
+        </ul>
+      </div>
+      <p class="colophon">
+        <span>© 2005–2026 Michael Torbert</span>
+        <span>Semper Fidelis.</span>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
