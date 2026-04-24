@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Michael Torbert — WordPress developer, Marine, founder of All-in-One SEO Pack</title>
+  <meta name="description" content="Personal site of Michael Torbert: WordPress developer, Marine Corps veteran, founder of All-in-One SEO Pack, CEO of Semper Fi Web Design, and co-author of WordPress All-in-One for Dummies.">
+  <style>
+    :root {
+      --ink:       #111111;
+      --bone:      #faf8f3;
+      --paper:     #ffffff;
+      --rule:      #e6e2d8;
+      --muted:     #5b5952;
+      --accent:    #a43f28;
+      --serif:     Georgia, "Iowan Old Style", "Source Serif Pro", ui-serif, serif;
+      --sans:      -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+      --mono:      ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+      --measure:   42rem;   /* ~680px reading column */
+      --canvas:    70rem;   /* 1120px outer canvas */
+      --step:      clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bone);
+      color: var(--ink);
+      font: var(--step)/1.65 var(--sans);
+      font-feature-settings: "kern", "liga", "clig";
+    }
+
+    a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--accent); text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .skip {
+      position: absolute; left: -9999px; top: auto;
+      background: var(--ink); color: var(--bone); padding: .5rem .75rem;
+    }
+    .skip:focus { left: 1rem; top: 1rem; z-index: 10; }
+
+    .shell { max-width: var(--canvas); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* --- Header --- */
+    .site-header {
+      border-bottom: 1px solid var(--rule);
+      background: var(--bone);
+      position: sticky; top: 0; z-index: 5;
+    }
+    .site-header .shell {
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding-top: 1.25rem; padding-bottom: 1.25rem;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+    }
+    .wordmark em { font-style: italic; color: var(--accent); }
+    .primary-nav ul {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: .8125rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+    }
+    .primary-nav a { text-decoration: none; color: var(--muted); }
+    .primary-nav a[aria-current="page"] { color: var(--ink); }
+    .primary-nav a:hover { color: var(--accent); }
+
+    /* --- Hero --- */
+    .hero { padding: 7rem 0 4.5rem; border-bottom: 1px solid var(--rule); }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      margin: 0 0 1.5rem;
+      max-width: 14ch;
+    }
+    .hero h1 .amp { color: var(--accent); font-style: italic; }
+    .hero .lede {
+      font-size: 1.25rem;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: var(--measure);
+      margin: 0 0 2.5rem;
+    }
+    .hero .lede strong { color: var(--ink); font-weight: 500; }
+    .ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .cta {
+      font-family: var(--mono);
+      font-size: .8125rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: .9rem 1.25rem;
+      text-decoration: none;
+      border: 1px solid var(--ink);
+      display: inline-flex; align-items: center; gap: .5rem;
+      transition: background .15s ease, color .15s ease;
+    }
+    .cta--primary { background: var(--ink); color: var(--bone); }
+    .cta--primary:hover { background: var(--accent); border-color: var(--accent); color: var(--bone); }
+    .cta--ghost:hover { background: var(--ink); color: var(--bone); }
+
+    /* --- Credentials strip --- */
+    .credentials {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .credentials-label {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+    .credentials-list {
+      list-style: none; margin: 0; padding: 0;
+      display: flex; flex-wrap: wrap;
+      gap: .5rem 2rem;
+      font-family: var(--serif);
+      font-size: 1.0625rem;
+      color: var(--ink);
+    }
+    .credentials-list li { position: relative; }
+    .credentials-list li + li::before {
+      content: "·"; color: var(--rule);
+      position: absolute; left: -1.1rem; top: 0;
+    }
+
+    /* --- Section scaffolding --- */
+    section { padding: 5.5rem 0; border-bottom: 1px solid var(--rule); }
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1.5rem; margin-bottom: 3rem; flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .section-head .more {
+      font-family: var(--mono);
+      font-size: .8125rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .section-head .more:hover { color: var(--accent); }
+
+    /* --- Writing cards --- */
+    .writing-grid {
+      display: grid; gap: 2.5rem;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .post {
+      display: flex; flex-direction: column; gap: .75rem;
+      border-top: 1px solid var(--ink);
+      padding-top: 1.25rem;
+    }
+    .post .tag {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .post h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .post h3 a { text-decoration: none; background-image: linear-gradient(var(--ink), var(--ink)); background-size: 0 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .2s ease; }
+    .post h3 a:hover { background-size: 100% 1px; color: var(--ink); }
+    .post .dek { color: var(--muted); margin: 0; }
+    .post .meta {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: auto;
+      letter-spacing: 0.04em;
+    }
+
+    /* --- Projects --- */
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+    .project {
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      display: grid; grid-template-columns: 4rem 1fr; gap: 1.5rem;
+    }
+    .project .num {
+      font-family: var(--mono);
+      font-size: .8125rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .project h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.375rem;
+      margin: 0 0 .25rem;
+    }
+    .project .role {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 .75rem;
+    }
+    .project p.desc { margin: 0; color: var(--muted); }
+    .project a.link {
+      margin-top: .75rem;
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      text-decoration: none;
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      align-self: start;
+      padding-bottom: 2px;
+    }
+    .project a.link:hover { color: var(--accent); border-color: var(--accent); }
+    .project:nth-child(-n+2) { border-top: 1px solid var(--ink); }
+
+    /* --- Photography teaser --- */
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1rem; margin-top: 0;
+    }
+    .photo-grid figure {
+      margin: 0;
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(135deg, #dfd9cc, #c9c1ae);
+      display: flex; align-items: flex-end; justify-content: flex-start;
+      padding: .75rem;
+      border: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-grid figure:nth-child(2) { background: linear-gradient(135deg, #cfcabb, #a79c80); }
+    .photo-grid figure:nth-child(3) { background: linear-gradient(135deg, #b9b29d, #8a7f63); }
+    .photo-grid figure:nth-child(4) { background: linear-gradient(135deg, #d6cfbc, #b3a889); }
+    .photo-grid figcaption {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bone);
+      background: rgba(17,17,17,0.75);
+      padding: .25rem .5rem;
+    }
+
+    /* --- About preview --- */
+    .about-preview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+    .about-preview .col-head {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 1rem;
+    }
+    .about-preview h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+      line-height: 1.15;
+      margin: 0 0 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .about-preview p { color: var(--muted); margin: 0 0 1rem; max-width: 34rem; }
+    .about-preview .more-link {
+      font-family: var(--mono);
+      font-size: .8125rem;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+      display: inline-block;
+      margin-top: 1rem;
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+    }
+    .about-preview .more-link:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* --- Footer --- */
+    .site-footer { padding: 4rem 0 2.5rem; background: var(--ink); color: var(--bone); }
+    .site-footer .shell { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; }
+    .site-footer h4 {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8a877e;
+      margin: 0 0 1rem;
+      font-weight: 400;
+    }
+    .site-footer a { color: var(--bone); text-decoration: none; border-bottom: 1px solid #3a3833; padding-bottom: 1px; }
+    .site-footer a:hover { border-color: var(--bone); color: #fff; }
+    .site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+    .site-footer .colophon {
+      grid-column: 1 / -1;
+      border-top: 1px solid #2a2824;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: #8a877e;
+      letter-spacing: 0.04em;
+    }
+    .site-footer .signoff { font-family: var(--serif); font-style: italic; color: #d4cfc2; font-size: 1rem; max-width: 22rem; }
+
+    /* --- Responsive --- */
+    @media (max-width: 780px) {
+      section { padding: 3.5rem 0; }
+      .hero { padding: 4rem 0 3rem; }
+      .site-header .shell { padding-top: 1rem; padding-bottom: 1rem; }
+      .primary-nav ul { gap: 1rem; }
+      .writing-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .projects { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-preview { grid-template-columns: 1fr; gap: 1.5rem; }
+      .site-footer .shell { grid-template-columns: 1fr 1fr; }
+      .site-footer .colophon { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell">
+      <a class="wordmark" href="/">Michael <em>Torbert</em></a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="/" aria-current="page">home</a></li>
+          <li><a href="about.html">about</a></li>
+          <li><a href="/writing/">writing</a></li>
+          <li><a href="/photography/">photography</a></li>
+          <li><a href="/projects/">projects</a></li>
+          <li><a href="contact.html">contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="shell">
+        <p class="eyebrow">Raleigh, NC · Est. 2005</p>
+        <h1 id="hero-heading">Building on WordPress <span class="amp">&amp;</span> writing about it.</h1>
+        <p class="lede">
+          I'm <strong>Michael Torbert</strong> — a WordPress developer, Marine Corps veteran,
+          founder of the <strong>All-in-One SEO Pack</strong> plugin, CEO of <strong>Semper Fi Web Design</strong>,
+          and co-author of <em>WordPress All-in-One for Dummies</em>.
+        </p>
+        <div class="ctas">
+          <a class="cta cta--primary" href="/writing/">Read the writing →</a>
+          <a class="cta cta--ghost" href="contact.html">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="credentials" aria-label="Credentials">
+      <div class="shell">
+        <p class="credentials-label">Work &amp; affiliations</p>
+        <ul class="credentials-list">
+          <li>All-in-One SEO Pack</li>
+          <li>Semper Fi Web Design</li>
+          <li>WordPress All-in-One for Dummies</li>
+          <li>United States Marine Corps</li>
+          <li>Virginia Tech</li>
+          <li>WordCamp Organizer</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="writing-heading">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="writing-heading">Selected writing</h2>
+          <a class="more" href="/writing/">all writing →</a>
+        </div>
+
+        <div class="writing-grid">
+          <article class="post">
+            <span class="tag">WordPress</span>
+            <h3><a href="#">What 15 years of All-in-One SEO Pack taught me about WordPress</a></h3>
+            <p class="dek">Notes from shipping a plugin to millions of installs — on community, maintenance, and knowing when to let go.</p>
+            <p class="meta">Essay · 12 min read</p>
+          </article>
+
+          <article class="post">
+            <span class="tag">Technology</span>
+            <h3><a href="#">Why the open web still matters in 2026</a></h3>
+            <p class="dek">A case for small, personal, durable sites in an era that keeps trying to replace them with feeds.</p>
+            <p class="meta">Essay · 7 min read</p>
+          </article>
+
+          <article class="post">
+            <span class="tag">Travel</span>
+            <h3><a href="#">A week of yak herders and high passes in Ladakh</a></h3>
+            <p class="dek">Field notes from a trip supporting my wife's work with marginalized Tibetan women and Yak My Body.</p>
+            <p class="meta">Travel · 9 min read</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="projects-heading">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="projects-heading">Projects &amp; work</h2>
+          <a class="more" href="/projects/">all projects →</a>
+        </div>
+
+        <div class="projects">
+          <article class="project">
+            <span class="num">01</span>
+            <div>
+              <h3>All-in-One SEO Pack</h3>
+              <p class="role">Founder · WordPress plugin</p>
+              <p class="desc">The original SEO plugin for WordPress. Installed on millions of sites worldwide since 2007.</p>
+              <a class="link" href="#">aioseo.com →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="num">02</span>
+            <div>
+              <h3>Semper Fi Web Design</h3>
+              <p class="role">CEO · Agency</p>
+              <p class="desc">A veteran-founded WordPress studio building bespoke sites for small businesses and authors.</p>
+              <a class="link" href="#">semperfiwebdesign.com →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="num">03</span>
+            <div>
+              <h3>WordPress All-in-One for Dummies</h3>
+              <p class="role">Co-author · Wiley</p>
+              <p class="desc">A comprehensive reference for running WordPress — co-authored with Lisa Sabin-Wilson.</p>
+              <a class="link" href="#">find a copy →</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="num">04</span>
+            <div>
+              <h3>Speaking &amp; WordCamps</h3>
+              <p class="role">Organizer · Speaker</p>
+              <p class="desc">Years of organizing WordCamps and speaking on WordPress, SEO, and running small software businesses.</p>
+              <a class="link" href="#">past talks →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="photo-heading">
+      <div class="shell">
+        <div class="section-head">
+          <h2 id="photo-heading">Photography</h2>
+          <a class="more" href="/photography/">view the gallery →</a>
+        </div>
+
+        <div class="photo-grid">
+          <figure><figcaption>Ladakh, 2024</figcaption></figure>
+          <figure><figcaption>Blue Ridge, NC</figcaption></figure>
+          <figure><figcaption>Kyoto, 2023</figcaption></figure>
+          <figure><figcaption>Camp Lejeune</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="about-heading">
+      <div class="shell about-preview">
+        <div>
+          <p class="col-head">About</p>
+          <h2 id="about-heading">Marine. Developer. Southerner. Husband.</h2>
+        </div>
+        <div>
+          <p>I grew up in the South, studied at Virginia Tech, served in the United States Marine Corps, and somewhere along the way fell hard for WordPress. In 2007 I released what would become the All-in-One SEO Pack and never quite looked back.</p>
+          <p>These days I write, build, organize WordCamps, travel with my wife Kim, and take more photographs than I publish.</p>
+          <a class="more-link" href="about.html">Read the full story →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div>
+        <h4>Colophon</h4>
+        <p class="signoff">A small, personal corner of the web — hand-kept since 2005. Subscribe by <a href="/feed/">RSS</a>.</p>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="mailto:michael@example.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/michaeltorbert/">LinkedIn</a></li>
+          <li><a href="https://profiles.wordpress.org/hallsofmontezuma/">WordPress.org</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Writing</h4>
+        <ul>
+          <li><a href="/category/wordpress/">WordPress</a></li>
+          <li><a href="/category/technology/">Technology</a></li>
+          <li><a href="/category/business/">Business</a></li>
+          <li><a href="/category/travel/">Travel</a></li>
+          <li><a href="/category/photography/">Photography</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Archive</h4>
+        <ul>
+          <li><a href="/category/virginia-tech/">Virginia Tech</a></li>
+          <li><a href="/category/wordcamp/">WordCamp</a></li>
+          <li><a href="/category/politics/">Politics</a></li>
+          <li><a href="/archive/">Full archive</a></li>
+        </ul>
+      </div>
+      <p class="colophon">
+        <span>© 2005–2026 Michael Torbert</span>
+        <span>Semper Fidelis.</span>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
