@@ -39,6 +39,30 @@ is and what he built, then surfaces the blog, photography, and a hire-me path.
 | `about.html` | The bio, restructured around the USMC → AIOSEO → author/community timeline |
 | `hire.html` | Replaces "Hire WordPress Developer": services list + contact form |
 
+## Ranking #1 for "Kimi's Carpets Plus"
+
+A stated goal of the site is to rank first for searches about Kimi's Carpets
+Plus in Fuquay Varina. The redesign pursues that with a dedicated landing page
+instead of leaning on the homepage:
+
+- **`kimis-carpets-plus.html`** keeps the existing URL slug (canonical points
+  to `/kimis-carpets-plus/`) so current rankings and backlinks are preserved.
+- Exact-match `<title>`, meta description, `h1`, and FAQ subheads targeting
+  "Kimi's Carpets Plus Fuquay Varina" and buyer-intent variants
+  ("read this before buying").
+- **Article + FAQPage + BreadcrumbList JSON-LD**, with the business referenced
+  as the `about` entity (independent review — eligible for rich results,
+  unlike self-serving review markup).
+- **Internal link equity**: a full-width pinned card at the top of the
+  homepage blog section and the blog index, plus a sitewide footer link — all
+  with keyword-rich anchor text.
+- "Kept up to date" framing + visible update cadence, since freshness matters
+  for review-style queries.
+
+This is stronger than the current setup (the post title doubling as the
+homepage `<title>`), because a dedicated page can match the query more
+precisely while the homepage independently ranks for "Michael Torbert".
+
 ## Implementation notes
 
 - All imagery is placeholder (CSS gradients + glyphs) so the prototype is
